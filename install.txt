@@ -1,0 +1,44 @@
+Add packages when installing
+
+kitty git neovim nvidia xorg-server xorg-xinit
+
+
+
+
+Install Yay
+
+cd /opt
+sudo git clone https://aur.archlinux.org/yay-git.git
+sudo chown -R zack:zack yay-git
+cd yay-git
+makepg -si
+
+
+For NVIDIA work with Hyprland
+
+edit /etc/mkinitcpio.conf
+ 
+Add
+
+MODULES=(... nvidia nvidia_modeset nvidia_uvm nvidia_drm ...)
+
+
+
+create and edit file /ect/modprobe.d/nvidia.conf
+
+options nvidia_drm modeset=1 fbdev=1
+
+
+
+Rebuild initframs with terminal command
+
+sudo mkinitcpio -P
+
+then reboot system
+
+
+
+
+
+
+
